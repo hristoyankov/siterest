@@ -1,4 +1,11 @@
 /////
+// Accounts configuration
+/////
+Accounts.ui.config({
+    passwordSignupFields: 'USERNAME_AND_EMAIL'
+});
+
+/////
 // template helpers 
 /////
 
