@@ -12,7 +12,7 @@ Accounts.ui.config({
 // helper function that returns all available websites
 Template.website_list.helpers({
     websites:function(){
-	return Websites.find({});
+	return Websites.find({}, {sort: {votes:-1, createdOn:-1}});
     }
 });
 
@@ -27,7 +27,12 @@ Template.website_item.events({
 	// (this is the data context for the template)
 	var website_id = this._id;
 	console.log("Up voting website with id "+website_id);
+        console.log("Votes:"+ (Websites.findOne({_id: website_id}).votes + 1));
+
 	// put the code in here to add a vote to a website!
+        Websites.update(website_id, {
+            $set: {votes: Websites.findOne({_id: website_id}).votes + 1}
+        });
 
 	return false;// prevent the button from reloading the page
     }, 
@@ -37,8 +42,12 @@ Template.website_item.events({
 	// (this is the data context for the template)
 	var website_id = this._id;
 	console.log("Down voting website with id "+website_id);
+        console.log("Votes:"+ (Websites.findOne({_id: website_id}).votes - 1));
 
 	// put the code in here to remove a vote from a website!
+        Websites.update(website_id, {
+            $set: {votes: Websites.findOne({_id: website_id}).votes - 1}
+        });
 
 	return false;// prevent the button from reloading the page
     }
