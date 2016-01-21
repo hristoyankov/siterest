@@ -55,7 +55,15 @@ Template.website_form.events({
 	console.log("The url they entered is: "+url);
 	
 	//  put your website saving code in here!	
+    	Websites.insert({
+    	    title:event.target.title.value,
+    	    url:event.target.title.value,
+    	    description:event.target.description.value,
+            votes:0,
+    	    createdOn:new Date()
+    	});
 
+        
 	return false;// stop the form submit from reloading the page
 
     }
