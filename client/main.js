@@ -1,4 +1,33 @@
 /////
+/// routing 
+////
+
+Router.configure({
+    layoutTemplate: 'ApplicationLayout'
+});
+
+Router.route('/', function () {
+    this.render('navbar', {
+        to:"navbar"
+    });
+    this.render('welcome', {
+        to:"main"
+    });
+});
+
+Router.route('/site/:_id', function () {
+    this.render('navbar', {
+        to:"navbar"
+    });
+    this.render('website-details', {
+        to:"main", 
+        data:function(){
+            return Websites.findOne({_id:this.params._id});
+        }
+    });
+});
+
+/////
 // Accounts configuration
 /////
 Accounts.ui.config({

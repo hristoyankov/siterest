@@ -1,22 +1,33 @@
 <body>
   <!-- navbar  - you will be putting the login functions here -->
+
+
+</body>
+
+<template name="ApplicationLayout">
+  {{> yield "navbar"}}
+  {{> yield "main"}}
+</template>
+
+<template name="navbar">
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
           SiteRest
         </a>
         {{> loginButtons}}
       </div>
     </div>
   </nav>
+</template>
 
+<template name="welcome">
   <div class="container">
     {{> website_form}}
     {{> website_list}}
   </div>
-</body>
-
+</template>
 
 <template name="website_form">
   {{#if currentUser}}
@@ -72,7 +83,19 @@
       <a href="#" class="btn btn-default js-downvote">
         <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
       </a>
+      <a href="/site/{{_id}}" class="btn btn-info">
+        Details
+      </a>
       <!-- you will be putting your up and down vote buttons in here! -->
     </div>
   </li>
+</template>
+
+<template name="website-details">
+  <div class="container">
+    <h2>Details for {{title}}</h2>
+    <p>{{description}}</p>
+    <p>Added on: {{createdOn}}</p>
+    <p>Upvotes: {{upvotes}}, Downvotes: {{downvotes}}</p>
+  </div> <!-- container -->
 </template>
