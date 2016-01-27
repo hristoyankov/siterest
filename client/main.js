@@ -52,6 +52,9 @@ Template.website_item.events({
         });
 
 	return false;// prevent the button from reloading the page
+    },
+    "click .js-website-details": function(event) {
+        console.log("Website details");
     }
 })
 
@@ -70,6 +73,8 @@ Template.website_form.events({
     	    title:event.target.title.value,
     	    url:event.target.title.value,
     	    description:event.target.description.value,
+            downvotes:0,
+            upvotes:0,
             votes:0,
     	    createdOn:new Date()
     	});
