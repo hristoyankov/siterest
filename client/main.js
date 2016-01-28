@@ -34,6 +34,13 @@ Accounts.ui.config({
     passwordSignupFields: 'USERNAME_AND_EMAIL'
 });
 
+////
+// Comments configuration
+////
+Comments.ui.config({
+    template: 'bootstrap'
+});
+
 /////
 // template helpers 
 /////
@@ -44,6 +51,12 @@ Template.website_list.helpers({
 	return Websites.find({}, {sort: {votes:-1, createdOn:-1}});
     }
 });
+
+Template.commentsBox.helpers({
+    loginAction: Meteor.user() == null
+
+});
+
 
 
 /////

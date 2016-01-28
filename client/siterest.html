@@ -93,9 +93,15 @@
 
 <template name="website-details">
   <div class="container">
-    <h2>Details for {{title}}</h2>
-    <p>{{description}}</p>
-    <p>Added on: {{createdOn}}</p>
-    <p>Upvotes: {{upvotes}}, Downvotes: {{downvotes}}</p>
+    <div class="row">
+      <h2>Details for {{title}}</h2>
+      <p>{{description}}</p>
+      <p>Added on: {{createdOn}}</p>
+      <p>Upvotes: {{upvotes}}, Downvotes: {{downvotes}}</p>
+
+      <div class="comment-section">
+        {{> commentsBox id=_id}}
+      </div>
+    </div> <!-- row -->
   </div> <!-- container -->
 </template>

@@ -41,3 +41,11 @@ Meteor.startup(function () {
     	});
     }
 });
+
+Meteor.publish('allComments', function() {
+    return Comments.getAll();
+});
+
+Meteor.publish('articleComments', function(docId) {
+    return Comments.get(docId);
+});
